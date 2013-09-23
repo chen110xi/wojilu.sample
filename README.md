@@ -1,4 +1,4 @@
-软件名称：**wojilu.sample “我记录框架 - 快速入门”**   
+软件名称： **wojilu.sample “我记录框架 - 快速入门”**    
 软件介绍：本演示代码，是“我记录框架”教程的配套代码。教程在 <http://www.wojilu.com/framework> (图文)  
 
 
