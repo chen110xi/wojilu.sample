@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wojilu.sample", "wojilu.sample\wojilu.sample.csproj", "{09C82AE7-8C74-4B5B-AD20-040357E4BA04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wojilu.sample.web", "wojilu.sample.web\wojilu.sample.web.csproj", "{89187D8A-429C-4A28-8695-4EE2CA3352D5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{09C82AE7-8C74-4B5B-AD20-040357E4BA04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09C82AE7-8C74-4B5B-AD20-040357E4BA04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09C82AE7-8C74-4B5B-AD20-040357E4BA04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09C82AE7-8C74-4B5B-AD20-040357E4BA04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89187D8A-429C-4A28-8695-4EE2CA3352D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89187D8A-429C-4A28-8695-4EE2CA3352D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89187D8A-429C-4A28-8695-4EE2CA3352D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89187D8A-429C-4A28-8695-4EE2CA3352D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
