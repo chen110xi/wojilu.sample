@@ -14,7 +14,7 @@ namespace wojilu.sample.Controller.Admin {
             bindList( "list", "c", list, bindLink );
         }
 
-        private void bindLink( IBlock block, int id ) {
+        private void bindLink( IBlock block, long id ) {
             block.Set( "c.EditLink", to( Edit, id ) );
             block.Set( "c.DeleteLink", to( Delete, id ) );
         }
@@ -33,20 +33,20 @@ namespace wojilu.sample.Controller.Admin {
             redirect( Index );
         }
 
-        public void Edit( int id ) {
+        public void Edit( long id ) {
             target( Update, id );
             User c = User.findById( id );
             bind( c );
         }
 
-        public void Update( int id ) {
+        public void Update( long id ) {
             User c = User.findById( id );
             c = ctx.PostValue( c ) as User;
             db.update( c );
             redirect( Index );
         }
 
-        public void Delete( int id ) {
+        public void Delete( long id ) {
             User c = User.findById( id );
             db.delete( c );
             redirect( Index );

@@ -110,16 +110,16 @@ namespace wojilu.sample.Controller.Admin {
                 redirect( Index );
         }
 
-        public void Edit( int id ) {
+        public void Edit( long id ) {
             target( Update, id );
             Article a = Article.findById( id );
             bind( a );
-            int selected = a.Category == null ? 0 : a.Category.Id;
+            long selected = a.Category == null ? 0 : a.Category.Id;
             dropList( "categoryId", Category.findAll(), "Name=Id", selected );
             set( "article.Content", a.Content );
         }
 
-        public void Update( int id ) {
+        public void Update( long id ) {
             Article a = Article.findById( id );
             a = ctx.PostValue( a ) as Article;
             a.Category = new Category { Id = ctx.PostInt( "categoryId" ) };
@@ -134,7 +134,7 @@ namespace wojilu.sample.Controller.Admin {
         }
 
         [HttpDelete]
-        public void Delete( int id ) {
+        public void Delete( long id ) {
             Article a = Article.findById( id );
             db.delete( a );
             redirect( Index );

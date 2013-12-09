@@ -18,7 +18,7 @@ namespace wojilu.sample.Controller.Admin {
 
             logger.Info( "开始加载布局文件" );
 
-            int userId = ctx.web.UserId(); // 获取 cookie 中存储的加密过的 userId
+            long userId = ctx.web.UserId(); // 获取 cookie 中存储的加密过的 userId
             User user = User.findById( userId ); // 根据此 userId 检索出 user
 
             if (user == null) { // 某些用户长时间不登录，可能不存在了。比如被管理员删除了

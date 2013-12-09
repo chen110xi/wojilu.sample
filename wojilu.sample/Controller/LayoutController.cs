@@ -16,10 +16,10 @@ namespace wojilu.sample.Controller {
 
 
             List<Category> categories = Category.findAll();
-            bindCategories( categories );
+            bind( "categories", categories );
 
             List<Footer> footers = cdb.findAll<Footer>();
-            bindFooters( footers );
+            bind("footers", footers);
 
             bindNavCurrent();
         }
@@ -29,41 +29,6 @@ namespace wojilu.sample.Controller {
             string path = ctx.url.Path;
             if (path == "" || path == "/" || path.ToLower() == "/default.aspx") s = "class=\"selected\"";
             set( "homeSelected", s );
-        }
-
-        private void bindFooters( List<Footer> footers ) {
-            IBlock block = getBlock( "footers" );
-            foreach (Footer f in footers) {
-                block.Set( "f.Name", f.Name );
-                block.Set( "f.ShowLink", to( new FooterController().Show, f.Id ) );
-                block.Next();
-            }
-        }
-
-        private void bindCategories( List<Category> categories ) {
-
-            Category current = ctx.GetItem( "category" ) as Category;
-
-            IBlock cblock = getBlock( "categories" );
-            foreach (Category c in categories) {
-                cblock.Set( "c.Name", c.Name );
-                cblock.Set( "c.ShowLink", to( new CategoryController().Show, c.Id ) );
-
-                string selected = getSelected( current, c );
-                cblock.Set( "c.Selected", selected );
-
-                cblock.Next();
-            }
-
-        }
-
-        private static string getSelected( Category current, Category c ) {
-
-            string selected = "class=\"selected\"";
-
-            if (current == null) return "";
-            if (current.Id == c.Id) return selected;
-            return "";
         }
 
     }

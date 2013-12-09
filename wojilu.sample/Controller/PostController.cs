@@ -20,19 +20,13 @@ namespace wojilu.sample.Controller {
 
     public class PostController : ControllerBase {
 
- 
+
         [CacheAction( typeof( PostIndexCache ) )]
         public void Index() {
 
             List<Article> list = Article.findAll();
 
-            IBlock block = getBlock( "list" );
-            foreach (Article a in list) {
-
-                block.Set( "a.Title", a.Title );
-                block.Set( "a.Content", a.Content );
-                block.Next();
-            }
+            bind( "list", list );
 
 
         }

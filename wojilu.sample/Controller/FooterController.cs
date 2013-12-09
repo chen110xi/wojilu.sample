@@ -10,14 +10,14 @@ namespace wojilu.sample.Controller {
 
     public class FooterController : ControllerBase {
 
-        public void Show( int id ) {
+        public void Show( long id ) {
             bindFooterList( id );
             Footer f = cdb.findById<Footer>( id );
             set( "footer.Content", HttpUtility.HtmlDecode( f.Content ) );
             set( "footer.Name", f.Name );
         }
 
-        private void bindFooterList( int id ) {
+        private void bindFooterList( long id ) {
             List<Footer> list = cdb.findAll<Footer>();
             IBlock block = getBlock( "list" );
             foreach (Footer a in list) {

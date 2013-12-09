@@ -16,7 +16,7 @@ namespace wojilu.sample.Controller.Admin {
             bindList( "list", "footer", list, bindLink );
         }
 
-        private void bindLink( IBlock block, int id ) {
+        private void bindLink( IBlock block, long id ) {
             block.Set( "footer.EditLink", to( Edit, id ) );
             block.Set( "footer.DeleteLink", to( Delete, id ) );
         }
@@ -43,7 +43,7 @@ namespace wojilu.sample.Controller.Admin {
         }
 
 
-        public void Edit( int id ) {
+        public void Edit( long id ) {
             target( Update, id );
             Footer f = cdb.findById<Footer>( id );
             bind( f );
@@ -51,7 +51,7 @@ namespace wojilu.sample.Controller.Admin {
         }
 
         [HttpPost, DbTransaction]
-        public void Update( int id ) {
+        public void Update( long id ) {
             Footer f = cdb.findById<Footer>( id );
             f = ctx.PostValue( f ) as Footer;
             f.Content = ctx.PostHtml( "footer.Content" );
@@ -68,7 +68,7 @@ namespace wojilu.sample.Controller.Admin {
         }
 
         [HttpDelete, DbTransaction]
-        public void Delete( int id ) {
+        public void Delete( long id ) {
             Footer f = cdb.findById<Footer>( id );
             cdb.delete( f );
             redirect( Index );

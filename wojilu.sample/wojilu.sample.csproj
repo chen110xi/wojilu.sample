@@ -79,11 +79,11 @@
     <Compile Include="Controller\LayoutController.cs" />
     <Compile Include="Controller\MainController.cs" />
     <Compile Include="Controller\PostController.cs" />
-    <Compile Include="Domain\backup\Article1.cs" />
-    <Compile Include="Domain\backup\Category1.cs" />
+    <Compile Include="Domain\Article.cs" />
+    <Compile Include="Domain\Category.cs" />
     <Compile Include="Domain\Footer.cs" />
     <Compile Include="Domain\UploadFile.cs" />
-    <Compile Include="Domain\backup\User1.cs" />
+    <Compile Include="Domain\User.cs" />
     <Compile Include="Interface\ICategoryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RenderHelper.cs" />

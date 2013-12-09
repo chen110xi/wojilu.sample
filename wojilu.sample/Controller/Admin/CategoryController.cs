@@ -19,7 +19,7 @@ namespace wojilu.sample.Controller.Admin {
             categoryService = new CategoryService();
         }
 
-        public void Show( int id ) {
+        public void Show( long id ) {
             Category c = Category.findById( id );
             string jsonString = Json.ToString( c );
             ctx.RenderJson( jsonString );
@@ -37,7 +37,7 @@ namespace wojilu.sample.Controller.Admin {
             bindList( "list", "c", list, bindLink );
         }
 
-        private void bindLink( IBlock block, int id ) {
+        private void bindLink( IBlock block, long id ) {
             block.Set( "c.EditLink", to( Edit, id ) );
             block.Set( "c.DeleteLink", to( Delete, id ) );
         }
@@ -57,20 +57,20 @@ namespace wojilu.sample.Controller.Admin {
                 redirect( Index );
         }
 
-        public void Edit( int id ) {
+        public void Edit( long id ) {
             target( Update, id );
             Category c = Category.findById( id );
             bind( c );
         }
 
-        public void Update( int id ) {
+        public void Update( long id ) {
             Category c = Category.findById( id );
             c = ctx.PostValue( c ) as Category;
             db.update( c );
             redirect( Index );
         }
 
-        public void Delete( int id ) {
+        public void Delete( long id ) {
             Category c = Category.findById( id );
             db.delete( c );
             redirect( Index );

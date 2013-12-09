@@ -72,6 +72,18 @@
             </summary>
             <param name="actionViewName">视图文件的名称，比如 List，或者带上路径 /Blog/Show(路径从视图view根目录算起)</param>
         </member>
+        <member name="M:wojilu.Web.Mvc.ControllerBase.view(wojilu.aAction)">
+            <summary>
+            手动指定当前 action 的视图文件(指定视图文件之后，默认的模板将被忽略)
+            </summary>
+            <param name="action"></param>
+        </member>
+        <member name="M:wojilu.Web.Mvc.ControllerBase.view(wojilu.aActionWithId)">
+            <summary>
+            手动指定当前 action 的视图文件(指定视图文件之后，默认的模板将被忽略)
+            </summary>
+            <param name="action"></param>
+        </member>
         <member name="M:wojilu.Web.Mvc.ControllerBase.viewContent(System.String)">
             <summary>
             自定义当前视图模的内容(自定义内容之后，默认的模板将被忽略)
@@ -143,7 +155,7 @@
             </summary>
             <param name="action"></param>
         </member>
-        <member name="M:wojilu.Web.Mvc.ControllerBase.target(wojilu.aActionWithId,System.Int32)">
+        <member name="M:wojilu.Web.Mvc.ControllerBase.target(wojilu.aActionWithId,System.Int64)">
             <summary>
             设置模板中表单提交的target
             </summary>
@@ -267,7 +279,7 @@
             <param name="action"></param>
             <returns>返回一个链接</returns>
         </member>
-        <member name="M:wojilu.Web.Mvc.ControllerBase.to(wojilu.aActionWithId,System.Int32)">
+        <member name="M:wojilu.Web.Mvc.ControllerBase.to(wojilu.aActionWithId,System.Int64)">
             <summary>
             链接到某个 action
             </summary>
@@ -282,7 +294,7 @@
             <param name="action"></param>
             <returns></returns>
         </member>
-        <member name="M:wojilu.Web.Mvc.ControllerBase.t2(wojilu.aActionWithId,System.Int32)">
+        <member name="M:wojilu.Web.Mvc.ControllerBase.t2(wojilu.aActionWithId,System.Int64)">
             <summary>
             链接到某个 action，链接中不包含 appId 信息
             </summary>
@@ -392,8 +404,14 @@
         </member>
         <member name="M:wojilu.Web.Mvc.ControllerBase.echoJsonOk">
             <summary>
-            将 json 信息 {Msg:"ok", IsValid:true, Info:""} 显示给客户端
+            将 json 信息 {"Msg":"ok", "IsValid":true, "Info":""} 显示给客户端
             </summary>
+        </member>
+        <member name="M:wojilu.Web.Mvc.ControllerBase.echoJsonOk(System.String)">
+            <summary>
+            将 json 信息 {"Msg": msg, "IsValid":true, "Info":""} 显示给客户端
+            </summary>
+            <param name="msg"></param>
         </member>
         <member name="M:wojilu.Web.Mvc.ControllerBase.echoRedirect(System.String)">
             <summary>
@@ -461,14 +479,14 @@
             </summary>
             <param name="action"></param>
         </member>
-        <member name="M:wojilu.Web.Mvc.ControllerBase.redirect(wojilu.aActionWithId,System.Int32)">
+        <member name="M:wojilu.Web.Mvc.ControllerBase.redirect(wojilu.aActionWithId,System.Int64)">
             <summary>
             跳转页面到指定 action
             </summary>
             <param name="action"></param>
             <param name="id"></param>
         </member>
-        <member name="M:wojilu.Web.Mvc.ControllerBase.redirect(System.String,System.Int32)">
+        <member name="M:wojilu.Web.Mvc.ControllerBase.redirect(System.String,System.Int64)">
             <summary>
             跳转页面到指定 action
             </summary>
@@ -499,12 +517,13 @@
             <param name="sectionName">需要加载内容的位置</param>
             <param name="action">被加载的 action</param>
         </member>
-        <member name="M:wojilu.Web.Mvc.ControllerBase.load(System.String,wojilu.aActionWithId,System.Int32)">
+        <member name="M:wojilu.Web.Mvc.ControllerBase.load(System.String,wojilu.aActionWithId,System.Int64)">
             <summary>
             将某 action 的内容加载到指定位置
             </summary>
             <param name="sectionName">需要加载内容的位置</param>
             <param name="action">被加载的 action</param>
+            <param name="id"></param>
         </member>
         <member name="M:wojilu.Web.Mvc.ControllerBase.loadHtml(System.String,System.String)">
             <summary>
@@ -514,7 +533,7 @@
             <param name="action"></param>
             <returns></returns>
         </member>
-        <member name="M:wojilu.Web.Mvc.ControllerBase.loadHtml(System.String,System.String,System.Int32)">
+        <member name="M:wojilu.Web.Mvc.ControllerBase.loadHtml(System.String,System.String,System.Int64)">
             <summary>
             获取某 action 的内容
             </summary>
@@ -530,7 +549,7 @@
             <param name="action"></param>
             <returns></returns>
         </member>
-        <member name="M:wojilu.Web.Mvc.ControllerBase.loadHtml(wojilu.aActionWithId,System.Int32)">
+        <member name="M:wojilu.Web.Mvc.ControllerBase.loadHtml(wojilu.aActionWithId,System.Int64)">
             <summary>
             获取某 action 的内容
             </summary>
@@ -544,20 +563,12 @@
             </summary>
             <param name="action"></param>
         </member>
-        <member name="M:wojilu.Web.Mvc.ControllerBase.run(wojilu.aActionWithId,System.Int32)">
+        <member name="M:wojilu.Web.Mvc.ControllerBase.run(wojilu.aActionWithId,System.Int64)">
             <summary>
             运行其他 action，并将运行结果作为当前 action 的内容
             </summary>
             <param name="action"></param>
             <param name="id"></param>
-        </member>
-        <member name="M:wojilu.Web.Mvc.ControllerBase.run(System.String,System.String,System.Object[])">
-            <summary>
-            运行其他 action，并将运行结果作为当前 action 的内容
-            </summary>
-            <param name="controllerType">被运行的 action 所属的 controller 类型</param>
-            <param name="actionName">action 名称</param>
-            <param name="args">需要的参数</param>
         </member>
         <member name="M:wojilu.Web.Mvc.ControllerBase.lang(System.String)">
             <summary>
@@ -613,7 +624,7 @@
             缓存对象，常驻内存，同时以json格式存储在磁盘中
             </summary>
         </member>
-        <member name="M:wojilu.Data.CacheObject.findById(System.Int32)">
+        <member name="M:wojilu.Data.CacheObject.findById(System.Int64)">
             <summary>
             根据 id 检索对象
             </summary>
@@ -783,7 +794,7 @@
             <param name="cookieName"></param>
             <returns></returns>
         </member>
-        <member name="M:wojilu.Web.IWebContext.UserLogin(System.Int32,System.String,System.DateTime)">
+        <member name="M:wojilu.Web.IWebContext.UserLogin(System.Int64,System.String,System.DateTime)">
             <summary>
             使用默认的cookie登录
             </summary>
@@ -791,7 +802,7 @@
             <param name="userName"></param>
             <param name="expiration">过期的时间，比如10分钟过期： DateTime.Now.AddMinutes( 10 )</param>
         </member>
-        <member name="M:wojilu.Web.IWebContext.UserLogin(System.Int32,System.String,wojilu.Common.LoginTime)">
+        <member name="M:wojilu.Web.IWebContext.UserLogin(System.Int64,System.String,wojilu.Common.LoginTime)">
             <summary>
             使用默认的cookie登录
             </summary>
@@ -799,7 +810,7 @@
             <param name="userName"></param>
             <param name="expiration">使用 LoginTime 枚举确定过期时间</param>
         </member>
-        <member name="M:wojilu.Web.IWebContext.UserLogin(System.String,System.Int32,System.String,System.DateTime)">
+        <member name="M:wojilu.Web.IWebContext.UserLogin(System.String,System.Int64,System.String,System.DateTime)">
             <summary>
             使用自定义的cookie名称登录，允许多个验证授权，互不影响
             </summary>
@@ -808,7 +819,7 @@
             <param name="userName"></param>
             <param name="expiration">过期的时间，比如10分钟过期： DateTime.Now.AddMinutes( 10 )</param>
         </member>
-        <member name="M:wojilu.Web.IWebContext.UserLogin(System.String,System.Int32,System.String,wojilu.Common.LoginTime)">
+        <member name="M:wojilu.Web.IWebContext.UserLogin(System.String,System.Int64,System.String,wojilu.Common.LoginTime)">
             <summary>
             使用自定义的cookie名称登录，允许多个验证授权，互不影响
             </summary>
@@ -1055,6 +1066,34 @@
             <param name="playUrl">视频播放页面的网址</param>
             <returns>视频信息</returns>
         </member>
+        <member name="T:wojilu.View.path">
+            <summary>
+            常用数据的路径信息
+            </summary>
+        </member>
+        <member name="M:wojilu.View.path.pic(System.String,System.String)">
+            <summary>
+            获取上传图片的缩略图。缩略图类型参看 site.config 中的 PhotoThumb 配置项
+            </summary>
+            <param name="picPath"></param>
+            <param name="thumbType">缩略图类型参看 site.config 中的 PhotoThumb 配置项</param>
+            <returns></returns>
+        </member>
+        <member name="M:wojilu.View.path.face(System.String,System.String)">
+            <summary>
+            获取上传头像的缩略图。缩略图类型参看 site.config 中的 AvatarThumb 配置项
+            </summary>
+            <param name="facePath"></param>
+            <param name="thumbType">缩略图类型参看 site.config 中的 AvatarThumb 配置项</param>
+            <returns></returns>
+        </member>
+        <member name="M:wojilu.View.path.map(System.String)">
+            <summary>
+            获取文件在服务器上的绝对路径
+            </summary>
+            <param name="relativePath"></param>
+            <returns></returns>
+        </member>
         <member name="T:wojilu.Web.Utils.HtmlFilter">
             <summary>
             html 过滤器：根据白名单，过滤掉不安全的字符
@@ -1211,11 +1250,18 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:wojilu.ObjectBase`1.findById(System.Int32)">
+        <member name="M:wojilu.ObjectBase`1.findById(System.Int64)">
             <summary>
             根据 id 查询对象
             </summary>
             <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:wojilu.ObjectBase`1.findOne(System.String)">
+            <summary>
+            根据查询条件，只返回一条结果
+            </summary>
+            <param name="condition"></param>
             <returns></returns>
         </member>
         <member name="M:wojilu.ObjectBase`1.count">
@@ -1297,7 +1343,7 @@
             <param name="action">更新的操作</param>
             <param name="condition">更新的条件</param>
         </member>
-        <member name="M:wojilu.ObjectBase`1.delete(System.Int32)">
+        <member name="M:wojilu.ObjectBase`1.delete(System.Int64)">
             <summary>
             根据 id 删除对象
             </summary>
@@ -1371,6 +1417,14 @@
             <summary>
             检查当前数据是否存在 
             </summary>
+        </member>
+        <member name="M:wojilu.Web.Mvc.ControllerViewsPath.getTemplatePathByAction(System.String,System.String)">
+            <summary>
+            获取某 action 的模板文件的绝对路径(包括模板的后缀名)
+            </summary>
+            <param name="action"></param>
+            <param name="viewsDir"></param>
+            <returns></returns>
         </member>
         <member name="T:wojilu.Aop.MethodObserver">
             <summary>
@@ -1475,7 +1529,7 @@
             <param name="body"></param>
             <returns></returns>
         </member>
-        <member name="M:wojilu.Web.Context.IViewerContext.AddFriend(System.Int32,System.String)">
+        <member name="M:wojilu.Web.Context.IViewerContext.AddFriend(System.Int64,System.String)">
             <summary>
             加为好友
             </summary>
@@ -1502,14 +1556,14 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:wojilu.Web.Context.IViewerContext.IsFollowing(System.Int32)">
+        <member name="M:wojilu.Web.Context.IViewerContext.IsFollowing(System.Int64)">
             <summary>
             是否关注了某人
             </summary>
             <param name="ownerId"></param>
             <returns></returns>
         </member>
-        <member name="M:wojilu.Web.Context.IViewerContext.IsFriend(System.Int32)">
+        <member name="M:wojilu.Web.Context.IViewerContext.IsFriend(System.Int64)">
             <summary>
             和某人是否是朋友
             </summary>
@@ -1544,6 +1598,31 @@
         <member name="T:wojilu.Common.AppBase.SaveStatus">
             <summary>
             存储状态(普通、草稿、删除、系统删除)
+            </summary>
+        </member>
+        <member name="F:wojilu.Common.AppBase.SaveStatus.Normal">
+            <summary>
+            普通
+            </summary>
+        </member>
+        <member name="F:wojilu.Common.AppBase.SaveStatus.Draft">
+            <summary>
+            草稿
+            </summary>
+        </member>
+        <member name="F:wojilu.Common.AppBase.SaveStatus.Delete">
+            <summary>
+            删除到回收站
+            </summary>
+        </member>
+        <member name="F:wojilu.Common.AppBase.SaveStatus.SysDelete">
+            <summary>
+            删除到系统回收站
+            </summary>
+        </member>
+        <member name="F:wojilu.Common.AppBase.SaveStatus.Private">
+            <summary>
+            私有数据，不公开显示
             </summary>
         </member>
         <member name="T:wojilu.Web.RssItemList">
@@ -1700,14 +1779,6 @@
             <typeparam name="T"></typeparam>
             <returns></returns>
         </member>
-        <member name="M:wojilu.ObjectContext.CreateObject(System.String)">
-            <summary>
-            创建一个经过Aop和Ioc处理的对象，结果不是单例。
-            如果需要拦截，则创建代理子类；然后检测是否需要注入。
-            </summary>
-            <param name="typeFullName"></param>
-            <returns></returns>
-        </member>
         <member name="M:wojilu.ObjectContext.Create(System.String)">
             <summary>
             创建一个经过Aop和Ioc处理的对象，结果不是单例。
@@ -1732,6 +1803,15 @@
             <param name="targetType"></param>
             <returns></returns>
         </member>
+        <member name="M:wojilu.ObjectContext.CreateObject(System.Type,System.Object)">
+            <summary>
+            创建一个经过Aop和Ioc处理的对象，结果不是单例。
+            如果需要拦截，则创建代理子类；然后检测是否需要注入。
+            </summary>
+            <param name="targetType"></param>
+            <param name="invokerName">如果是根据接口自动装配，</param>
+            <returns></returns>
+        </member>
         <member name="M:wojilu.ObjectContext.Create``1(System.Type)">
             <summary>
             根据接口创建代理类，并经过注入处理。
@@ -1750,18 +1830,19 @@
             <param name="interfaceType">接口类型</param>
             <returns></returns>
         </member>
-        <member name="M:wojilu.ObjectContext.CreateObjectByIoc(System.Type)">
+        <member name="M:wojilu.ObjectContext.CreateByInterface(System.Type,System.Object)">
             <summary>
-            根据type，不从缓存(pool)中取，而是全新创建实例(有注入的就注入，没有注入的直接生成)，肯定不是单例
+            根据接口创建实例。如果没有在MapItem中指定，则自动装配。
             </summary>
             <param name="t"></param>
+            <param name="invokerName">调用者，供map注入使用。要求在map中唯一，推荐当前对象或type</param>
             <returns></returns>
         </member>
-        <member name="M:wojilu.ObjectContext.CreateObjectByIoc(System.String)">
+        <member name="M:wojilu.ObjectContext.createInstanceAndInject(wojilu.DI.MapItem,System.Object)">
             <summary>
-            根据type，不从缓存(pool)中取，而是全新创建实例(有注入的就注入，没有注入的直接生成)，肯定不是单例
+            IOC注入：检查对象的属性，根据配置注入，如果没有配置，则自动装配
             </summary>
-            <param name="typeFullName"></param>
+            <param name="mapItem"></param>
             <returns></returns>
         </member>
         <member name="M:wojilu.ObjectContext.InterceptProperty(System.Object)">
@@ -1787,7 +1868,7 @@
         </member>
         <member name="M:wojilu.ObjectContext.Inject(System.Object)">
             <summary>
-            根据容器配置，将依赖关系注入到已创建的对象中
+            根据容器配置(IOC)，将依赖关系注入到已创建的对象中
             </summary>
             <param name="obj"></param>
         </member>
@@ -2140,7 +2221,7 @@
             头像上传工具
             </summary>
         </member>
-        <member name="M:wojilu.Web.Utils.AvatarUploader.Save(wojilu.Web.HttpFile,System.Int32)">
+        <member name="M:wojilu.Web.Utils.AvatarUploader.Save(wojilu.Web.HttpFile,System.Int64)">
             <summary>
             保存用户上传的头像
             </summary>
@@ -2165,9 +2246,21 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:wojilu.Web.Mvc.MvcConfig.GetErrorTemplateFile">
+            <summary>
+            获取网站发生错误时报错的模板文件名，不包括路径，也不包括后缀名。默认是 error
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:wojilu.Web.Mvc.MvcConfig.GetMsgTemplatePath">
             <summary>
             获取反馈信息(通常使用echo方法时使用)的模板路径，默认是 /framework/views/msg.html
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:wojilu.Web.Mvc.MvcConfig.GetMsgTemplateFile">
+            <summary>
+            获取反馈信息(通常使用echo方法时使用)的模板文件名，不包括路径，也不包括后缀名。默认是 msg
             </summary>
             <returns></returns>
         </member>
@@ -2177,9 +2270,21 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:wojilu.Web.Mvc.MvcConfig.GetMsgBoxTemplateFile">
+            <summary>
+            获取弹窗的模板文件名，不包括路径，也不包括后缀名。默认是 msgbox
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:wojilu.Web.Mvc.MvcConfig.GetForwardTemplatePath">
             <summary>
             获取页面跳转的模板路径，默认是 /framework/views/forward.html
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:wojilu.Web.Mvc.MvcConfig.GetForwardTemplateFile">
+            <summary>
+            获取页面跳转的模板文件名，不包括路径，也不包括后缀名。默认是 forward
             </summary>
             <returns></returns>
         </member>
@@ -2221,7 +2326,17 @@
         </member>
         <member name="P:wojilu.Web.Mvc.MvcConfig.ViewDir">
             <summary>
-            视图文件所在目录。默认值是 /framework/views/ ，也可以在 mvc.config 中添加 viewsDir 项自定义
+            视图文件的默认目录，一些不需要区分客户端的模板，比如激活邮件模板等等需要用到。默认值是 /framework/views/
+            </summary>
+        </member>
+        <member name="P:wojilu.Web.Mvc.MvcConfig.ViewDirList">
+            <summary>
+            视图文件所在目录列表。默认值是 /framework/views/ ，也可以在 mvc.config 设置 viewsDirList ，可以添加多个目录
+            </summary>
+        </member>
+        <member name="P:wojilu.Web.Mvc.MvcConfig.ViewsFilter">
+            <summary>
+            视图(模板)过滤器，用于判断：哪些viewsDir应该使用
             </summary>
         </member>
         <member name="P:wojilu.Web.Mvc.MvcConfig.Version">
@@ -2418,7 +2533,7 @@
             <param name="idname"></param>
             <returns></returns>
         </member>
-        <member name="M:wojilu.Web.Context.MvcContext.GetInt(System.String)">
+        <member name="M:wojilu.Web.Context.MvcContext.GetLong(System.String)">
             <summary>
             从 url 中获取某项的值，并转换成整数
             </summary>
@@ -2474,7 +2589,7 @@
             <param name="idname"></param>
             <returns></returns>
         </member>
-        <member name="M:wojilu.Web.Context.MvcContext.PostInt(System.String)">
+        <member name="M:wojilu.Web.Context.MvcContext.PostLong(System.String)">
             <summary>
             从客户端 post 的数据中获取某项的值，并转换成整数
             </summary>
@@ -2544,6 +2659,13 @@
         <member name="M:wojilu.Web.Context.MvcContext.ParamInt(System.String)">
             <summary>
             从客户端提交的数据中获取某项的值，并转换成整数
+            </summary>
+            <param name="postItem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:wojilu.Web.Context.MvcContext.ParamLong(System.String)">
+            <summary>
+            从客户端提交的数据中获取某项的值，并转换成long
             </summary>
             <param name="postItem"></param>
             <returns></returns>
@@ -2902,7 +3024,7 @@
             获取服务的工具类
             </summary>
         </member>
-        <member name="M:wojilu.SOA.ServiceContext.Get(System.Int32)">
+        <member name="M:wojilu.SOA.ServiceContext.Get(System.Int64)">
             <summary>
             根据 id 获取服务
             </summary>
@@ -2923,7 +3045,7 @@
             <param name="ownerType"></param>
             <returns></returns>
         </member>
-        <member name="M:wojilu.SOA.ServiceContext.GetData(System.Int32,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})">
+        <member name="M:wojilu.SOA.ServiceContext.GetData(System.Int64,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})">
             <summary>
             根据服务 id 和参数，调用服务，返回服务运行的结果
             </summary>
@@ -3063,12 +3185,20 @@
             <typeparam name="T"></typeparam>
             <returns></returns>
         </member>
-        <member name="M:wojilu.db.findById``1(System.Int32)">
+        <member name="M:wojilu.db.findById``1(System.Int64)">
             <summary>
             根据 id 查询对象
             </summary>
             <typeparam name="T"></typeparam>
             <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:wojilu.db.findOne``1(System.String)">
+            <summary>
+            根据查询条件，只返回一条结果
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="condition"></param>
             <returns></returns>
         </member>
         <member name="M:wojilu.db.find``1(System.String)">
@@ -3157,7 +3287,7 @@
             <param name="obj"></param>
             <returns>返回受影响的行数</returns>
         </member>
-        <member name="M:wojilu.db.delete``1(System.Int32)">
+        <member name="M:wojilu.db.delete``1(System.Int64)">
             <summary>
             根据 id 删除数据
             </summary>
@@ -3190,32 +3320,59 @@
         </member>
         <member name="M:wojilu.db.RunReader``1(System.String)">
             <summary>
-            根据 sql 语句查询，返回一个 IDataReader
+            根据 sql 语句查询 T 所在的数据库，返回一个 IDataReader
             </summary>
             <typeparam name="T"></typeparam>
             <param name="sql"></param>
             <returns>返回一个 IDataReader</returns>
         </member>
+        <member name="M:wojilu.db.RunReader(System.String)">
+            <summary>
+            根据 sql 语句查询默认数据库，返回一个 IDataReader
+            </summary>
+            <param name="sql"></param>
+            <returns></returns>
+        </member>
         <member name="M:wojilu.db.RunScalar``1(System.String)">
             <summary>
-            根据 sql 语句查询，返回单行单列数据
+            根据 sql 语句查询 T 所在的数据库，返回单行单列数据
             </summary>
             <typeparam name="T"></typeparam>
             <param name="sql"></param>
             <returns>返回单行单列数据</returns>
         </member>
+        <member name="M:wojilu.db.RunScalar(System.String)">
+            <summary>
+            根据 sql 语句查询默认数据库，返回单行单列数据
+            </summary>
+            <param name="sql"></param>
+            <returns></returns>
+        </member>
         <member name="M:wojilu.db.RunSql``1(System.String)">
             <summary>
-            执行 sql 语句
+            在 T 类型对应的数据库上，执行 sql 语句。同时根据类型 T 自动更新缓存
             </summary>
             <typeparam name="T"></typeparam>
             <param name="sql"></param>
         </member>
+        <member name="M:wojilu.db.RunSql(System.String)">
+            <summary>
+            在默认数据库上，执行 sql 语句。不会更新缓存
+            </summary>
+            <param name="sql"></param>
+        </member>
         <member name="M:wojilu.db.RunTable``1(System.String)">
             <summary>
-            根据 sql 语句查询，返回一个 DataTable
+            根据 sql 语句查询 T 所在的数据库，返回一个 DataTable
             </summary>
             <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <returns></returns>
+        </member>
+        <member name="M:wojilu.db.RunTable(System.String)">
+            <summary>
+            根据 sql 语句，查询默认数据库，返回一个 DataTable
+            </summary>
             <param name="sql"></param>
             <returns></returns>
         </member>
@@ -3241,7 +3398,7 @@
         </member>
         <member name="M:wojilu.db.getCommand(System.String)">
             <summary>
-            获取一个数据库 Command
+            获取一个数据库 Command。如果尚未打开connection，则自动打开。
             </summary>
             <param name="CommandText"></param>
             <param name="cn"></param>
@@ -3249,13 +3406,13 @@
         </member>
         <member name="M:wojilu.db.getCommand(System.String,System.String)">
             <summary>
-            获取一个数据库 Command
+            获取一个数据库 Command。如果尚未打开connection，则自动打开。
             </summary>
             <returns></returns>
         </member>
         <member name="M:wojilu.db.getCommand(System.Data.IDbConnection,System.String)">
             <summary>
-            获取一个数据库 Command
+            获取一个数据库 Command。如果尚未打开connection，则自动打开。
             </summary>
             <param name="cn"></param>
             <param name="commandText"></param>
@@ -3263,7 +3420,7 @@
         </member>
         <member name="M:wojilu.db.getCommand(System.Type,System.String)">
             <summary>
-            获取一个数据库 Command
+            获取一个数据库 Command。如果尚未打开connection，则自动打开。
             </summary>
             <param name="dataType"></param>
             <param name="commandText"></param>
@@ -3464,13 +3621,6 @@
             根据文件名称获取模板对象，文件名必须从视图 view 的根目录算起
             </summary>
             <param name="fileName"></param>
-            <returns></returns>
-        </member>
-        <member name="M:wojilu.Web.Mvc.ControllerCore.getTemplatePathByAction(System.String)">
-            <summary>
-            获取某 action 的模板文件的绝对路径(包括模板的后缀名)
-            </summary>
-            <param name="action"></param>
             <returns></returns>
         </member>
         <member name="M:wojilu.Web.Mvc.ControllerCore.getTemplatePathByFile(System.String)">
@@ -3722,7 +3872,22 @@
         </member>
         <member name="T:wojilu.Common.AppBase.AccessStatus">
             <summary>
-            是否可访问的枚举(公开、好友、私人)
+            是否可访问的枚举(公开0、好友1、私人2)
+            </summary>
+        </member>
+        <member name="F:wojilu.Common.AppBase.AccessStatus.Public">
+            <summary>
+            公开
+            </summary>
+        </member>
+        <member name="F:wojilu.Common.AppBase.AccessStatus.Friend">
+            <summary>
+            仅限好友访问
+            </summary>
+        </member>
+        <member name="F:wojilu.Common.AppBase.AccessStatus.Private">
+            <summary>
+            自己才能访问
             </summary>
         </member>
         <member name="T:wojilu.Serialization.JSON">
@@ -4564,6 +4729,31 @@
             在线状态数据
             </summary>
         </member>
+        <member name="T:wojilu.View.url">
+            <summary>
+            当前网址信息
+            </summary>
+        </member>
+        <member name="P:wojilu.View.url.text">
+            <summary>
+            当前网址的完整信息，比如 http://www.abc.com:5112/main/xtest.aspx?name=zhang
+            </summary>
+        </member>
+        <member name="P:wojilu.View.url.path">
+            <summary>
+            当前网址中的路径信息，比如 /main/xtest.aspx
+            </summary>
+        </member>
+        <member name="P:wojilu.View.url.query">
+            <summary>
+            当前网址中问号后面的查询信息(包括问号)，比如 ?name=zhang
+            </summary>
+        </member>
+        <member name="P:wojilu.View.url.from">
+            <summary>
+            当前页面来源
+            </summary>
+        </member>
         <member name="T:wojilu.Web.Mvc.Routes.Route">
             <summary>
             解析后的路由数据的封装
@@ -5027,6 +5217,18 @@
             <summary>
             用于标注链接生成对象，提供开发查找的方便，对实际运行暂时没有意义。
             </summary>
+        </member>
+        <member name="T:wojilu.ViewData">
+            <summary>
+            视图对象集合
+            </summary>
+        </member>
+        <member name="M:wojilu.ViewData.get(System.String)">
+            <summary>
+            根据变量名称，获取值
+            </summary>
+            <param name="varName"></param>
+            <returns></returns>
         </member>
         <member name="T:wojilu.Web.Mvc.CtxLink">
             <summary>
@@ -6090,7 +6292,7 @@
             <typeparam name="T"></typeparam>
             <returns>返回所有数据的列表</returns>
         </member>
-        <member name="M:wojilu.cdb.findById``1(System.Int32)">
+        <member name="M:wojilu.cdb.findById``1(System.Int64)">
             <summary>
             根据 id 查询某条数据
             </summary>
@@ -6183,6 +6385,66 @@
             <summary>
             新浪播客
             </summary>
+        </member>
+        <member name="T:wojilu.View.page">
+            <summary>
+            对整体页面的操作
+            </summary>
+        </member>
+        <member name="M:wojilu.View.page.go(System.String)">
+            <summary>
+            页面跳转
+            </summary>
+            <param name="url"></param>
+        </member>
+        <member name="M:wojilu.View.page.header(System.String,System.String)">
+            <summary>
+            添加页面的 header 值
+            </summary>
+            <param name="headerName"></param>
+            <param name="headerValue"></param>
+        </member>
+        <member name="M:wojilu.View.page.status(System.String)">
+            <summary>
+            设置页面的 status ，比如 "404 Not Found"
+            </summary>
+            <param name="statusStr"></param>
+        </member>
+        <member name="M:wojilu.View.page.title(System.String)">
+            <summary>
+            设置页面的 title。在其他Layout中，通过 #{pageTitle} 获取
+            </summary>
+            <param name="titleMsg"></param>
+        </member>
+        <member name="M:wojilu.View.page.description(System.String)">
+            <summary>
+            设置页面的 description。在其他Layout中，通过 #{pageDescription} 获取
+            </summary>
+            <param name="descriptionMsg"></param>
+        </member>
+        <member name="M:wojilu.View.page.keywords(System.String)">
+            <summary>
+            设置页面的 keywords。在其他Layout中，通过 #{pageKeywords} 获取
+            </summary>
+            <param name="keywordsMsg"></param>
+        </member>
+        <member name="M:wojilu.View.page.exit(System.String)">
+            <summary>
+            整个页面退出，只显示当前 msg 信息(根据 msg 提示模板显示)
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:wojilu.View.page.exitText(System.String)">
+            <summary>
+            整个页面退出，只显示纯文本提示
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:wojilu.View.page.json(System.Object)">
+            <summary>
+            不再显示html内容，整个页面只显示当前的 json 字符串
+            </summary>
+            <param name="jsonStr"></param>
         </member>
         <member name="T:wojilu.Web.Mvc.Routes.RouteConfig">
             <summary>
@@ -6748,7 +7010,7 @@
             数据库连接项的类型
             </summary>
         </member>
-        <member name="M:wojilu.ORM.Utils.ValueSetter.setEntityByCheckNull(wojilu.IEntity,wojilu.ORM.EntityPropertyInfo,System.Object,System.Int32)">
+        <member name="M:wojilu.ORM.Utils.ValueSetter.setEntityByCheckNull(wojilu.IEntity,wojilu.ORM.EntityPropertyInfo,System.Object,System.Int64)">
             <summary>
             1.5新增，针对已删除用户应用 null object 模式
             </summary>
@@ -7364,6 +7626,51 @@
             此批注只能用在dotnet的decimal数据类型上。数据库存储的时候，使用的精度为：总位数19, 小数点后4位
             </summary>
         </member>
+        <member name="T:wojilu.View.v">
+            <summary>
+            模板视图的核心方法
+            </summary>
+        </member>
+        <member name="M:wojilu.View.v.data(System.String)">
+            <summary>
+            获取视图对象
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:wojilu.View.v.end">
+            <summary>
+            在当前模板中，显示到当前代码处为止；当前模板的剩余部分不再显示
+            </summary>
+        </member>
+        <member name="M:wojilu.View.v.load(wojilu.aAction)">
+            <summary>
+            加载其他 action 内容，到当前html代码处
+            </summary>
+            <param name="action"></param>
+        </member>
+        <member name="M:wojilu.View.v.load(wojilu.aActionWithId,System.Int32)">
+            <summary>
+            加载其他 action 内容，到当前html代码处
+            </summary>
+            <param name="action"></param>
+            <param name="id"></param>
+        </member>
+        <member name="M:wojilu.View.v.load(System.String,System.String)">
+            <summary>
+            加载其他 action 内容，到当前html代码处
+            </summary>
+            <param name="controller"></param>
+            <param name="action"></param>
+        </member>
+        <member name="M:wojilu.View.v.load(System.String,System.String,System.Int32)">
+            <summary>
+            加载其他 action 内容，到当前html代码处
+            </summary>
+            <param name="controller"></param>
+            <param name="action"></param>
+            <param name="id"></param>
+        </member>
         <member name="T:wojilu.Common.ItemValue">
             <summary>
             通用绑定对象
@@ -7840,6 +8147,13 @@
             </summary>
             <param name="msg"></param>
         </member>
+        <member name="M:wojilu.Web.Context.MvcContextUtils.endMsgByText(System.String,System.String)">
+            <summary>
+            显示信息(不带模板)，然后结束下面的流程。并发出 http 状态码(可选)
+            </summary>
+            <param name="msg"></param>
+            <param name="httpStatusCode"></param>
+        </member>
         <member name="M:wojilu.Web.Context.MvcContextUtils.endMsgByView(System.String)">
             <summary>
             显示信息(带模板)，然后结束下面的流程
@@ -7863,7 +8177,7 @@
             根据指定模板显示信息，然后结束下面的流程
             </summary>
             <param name="msg"></param>
-            <param name="templatePath">模板路径</param>
+            <param name="templateFileName">模板路径</param>
         </member>
         <member name="M:wojilu.Web.Context.MvcContextUtils.setGlobalVariable(wojilu.Web.ITemplate)">
             <summary>
@@ -8092,7 +8406,7 @@
             集中了对象的常用 CRUD (读取/插入/更新/删除) 操作方法，非泛型实现。主要用于某些不能使用泛型的场合，不太常用。
             </summary>
         </member>
-        <member name="M:wojilu.ndb.findById(System.Type,System.Int32)">
+        <member name="M:wojilu.ndb.findById(System.Type,System.Int64)">
             <summary>
             根据 id 查询对象
             </summary>
@@ -8155,7 +8469,7 @@
             <param name="condition">统计条件</param>
             <returns></returns>
         </member>
-        <member name="M:wojilu.ndb.delete(System.Type,System.Int32)">
+        <member name="M:wojilu.ndb.delete(System.Type,System.Int64)">
             <summary>
             根据 id 删除对象
             </summary>
@@ -8223,12 +8537,37 @@
             注册用户的接口
             </summary>
         </member>
+        <member name="P:wojilu.Members.Interface.IUser.Pwd">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:wojilu.Members.Interface.IUser.RoleId">
+            <summary>
+            角色
+            </summary>
+        </member>
+        <member name="P:wojilu.Members.Interface.IUser.PicSmall">
+            <summary>
+            上传头像的缩略图
+            </summary>
+        </member>
+        <member name="P:wojilu.Members.Interface.IUser.Email">
+            <summary>
+            Email
+            </summary>
+        </member>
+        <member name="P:wojilu.Members.Interface.IUser.Gender">
+            <summary>
+            性别
+            </summary>
+        </member>
         <member name="T:wojilu.Web.Mvc.Utils.ControllerRunner">
             <summary>
             运行某个 controller 的 action，并返回 html 结果
             </summary>
         </member>
-        <member name="M:wojilu.Web.Mvc.Utils.ControllerRunner.Run(wojilu.Web.Context.MvcContext,wojilu.aAction)">
+        <member name="M:wojilu.Web.Mvc.Utils.ControllerRunner.Run(wojilu.Web.Mvc.ControllerBase,wojilu.aAction)">
             <summary>
             运行某 action
             </summary>
@@ -8236,13 +8575,14 @@
             <param name="action"></param>
             <returns></returns>
         </member>
-        <member name="M:wojilu.Web.Mvc.Utils.ControllerRunner.Run(wojilu.Web.Context.MvcContext,wojilu.aActionWithId,System.Int32)">
+        <member name="M:wojilu.Web.Mvc.Utils.ControllerRunner.Run(wojilu.Web.Mvc.ControllerBase,wojilu.aActionWithId,System.Int64)">
             <summary>
             运行某 action
             </summary>
-            <param name="ctx"></param>
+            <param name="thisController"></param>
             <param name="action"></param>
             <param name="id"></param>
+            <param name="ctx"></param>
             <returns></returns>
         </member>
         <member name="M:wojilu.Web.Mvc.Utils.ControllerRunner.Run(wojilu.Web.Context.MvcContext,System.String,System.String)">
@@ -8259,6 +8599,16 @@
             <param name="actionName"></param>
             <returns></returns>
         </member>
+        <member name="M:wojilu.Web.Mvc.Utils.ControllerRunner.Run(wojilu.Web.Context.MvcContext,System.String,System.String,System.Object[])">
+            <summary>
+            运行某action
+            </summary>
+            <param name="ctx"></param>
+            <param name="controllerName"></param>
+            <param name="actionName"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
         <member name="M:wojilu.Web.Mvc.Utils.ControllerRunner.runAction(wojilu.Web.Mvc.ControllerBase,System.String)">
             <summary>
             运行某个controller的action方法，ctx已经注入controller
@@ -8266,12 +8616,6 @@
             <param name="controller"></param>
             <param name="actionName"></param>
             <returns></returns>
-        </member>
-        <member name="M:wojilu.Web.Mvc.Utils.ControllerRunner.Run(wojilu.Web.Context.MvcContext,System.String,System.String,System.Object[])">
-            <summary>
-            运行某 action
-            </summary>
-            <param name="actionName"></param>
         </member>
         <member name="M:wojilu.Web.Mvc.Utils.ControllerRunner.getMethod(wojilu.Web.Mvc.ControllerBase,System.String)">
             <summary>
@@ -8293,6 +8637,123 @@
             </summary>
             <param name="ctx"></param>
             <returns></returns>
+        </member>
+        <member name="T:wojilu.View.link">
+            <summary>
+            生成链接的工具
+            </summary>
+        </member>
+        <member name="M:wojilu.View.link.to(wojilu.aAction)">
+            <summary>
+            生成到某个action的链接
+            </summary>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:wojilu.View.link.to(wojilu.aActionWithId,System.Int64)">
+            <summary>
+            生成到某个action的链接
+            </summary>
+            <param name="action"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:wojilu.View.link.user(System.Object)">
+            <summary>
+            生成到某个用户的链接
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:wojilu.View.link.app(System.Object)">
+            <summary>
+            生成到某个app的链接(此app必须实现IApp接口)
+            </summary>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
+        <member name="M:wojilu.View.link.data(System.Object)">
+            <summary>
+            生成到某条数据的链接(此数据必须实现IAppData接口)
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:wojilu.View.ctx">
+            <summary>
+            当前上下文对象，包括当前登录用户、当前被访问用户、当前用户ip等
+            </summary>
+        </member>
+        <member name="M:wojilu.View.ctx.setItem(System.String,System.Object)">
+            <summary>
+            将数据放到 ctx 中，便于不同视图之间传递数据
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="M:wojilu.View.ctx.getItem(System.String)">
+            <summary>
+            获取上下文 ctx 中暂存的数据
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:wojilu.View.ctx.get(System.String)">
+            <summary>
+            当前通过 GET 方式提交的查询字符串
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:wojilu.View.ctx.getInt(System.String)">
+            <summary>
+            当前通过 GET 方式提交的查询字符串(返回整数类型)
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:wojilu.View.ctx.post(System.String)">
+            <summary>
+            当前通过 POST 方式提交的查询字符串
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:wojilu.View.ctx.postInt(System.String)">
+            <summary>
+            当前通过 POST 方式提交的查询字符串(返回整数类型)
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="P:wojilu.View.ctx.owner">
+            <summary>
+            当前被访问用户
+            </summary>
+        </member>
+        <member name="P:wojilu.View.ctx.viewer">
+            <summary>
+            当前访问者(可以是登录用户，也可以是游客；通过 IsLogin 判断)
+            </summary>
+        </member>
+        <member name="P:wojilu.View.ctx.app">
+            <summary>
+            当前app
+            </summary>
+        </member>
+        <member name="P:wojilu.View.ctx.method">
+            <summary>
+            当前提交的 HttpMethod，比如 GET/POST/PUT/DELETE 等
+            </summary>
+        </member>
+        <member name="P:wojilu.View.ctx.ip">
+            <summary>
+            当前访客的 IP 地址
+            </summary>
+        </member>
+        <member name="P:wojilu.View.ctx.agent">
+            <summary>
+            当前访客的浏览器信息
+            </summary>
         </member>
         <member name="T:wojilu.Web.Jobs.WebJob">
             <summary>
@@ -8383,6 +8844,29 @@
             <param name="count"></param>
             <returns></returns>
         </member>
+        <member name="T:wojilu.View.html">
+            <summary>
+            在模板中嵌入动态 html 代码
+            </summary>
+        </member>
+        <member name="M:wojilu.View.html.show(System.String)">
+            <summary>
+            在当前代码处，显示 html
+            </summary>
+            <param name="str"></param>
+        </member>
+        <member name="M:wojilu.View.html.showLine(System.String)">
+            <summary>
+            在当前代码处，显示 html ，并加上换行符(\r\n)
+            </summary>
+            <param name="str"></param>
+        </member>
+        <member name="M:wojilu.View.html.encode(System.String)">
+            <summary>
+            对要在浏览器中显示的字符串进行编码
+            </summary>
+            <param name="str"></param>
+        </member>
         <member name="T:wojilu.Data.cdbx">
             <summary>
             从内存数据库中查询数据
@@ -8467,16 +8951,6 @@
         <member name="F:wojilu.Config.RegisterType.CloseUnlessInvite">
             <summary>
             关闭注册，但受邀请的除外
-            </summary>
-        </member>
-        <member name="F:wojilu.Config.LoginType.Open">
-            <summary>
-            注册之后自动登录
-            </summary>
-        </member>
-        <member name="F:wojilu.Config.LoginType.ActivationEmail">
-            <summary>
-            注册之后并不自动登录；必须激活才能登录
             </summary>
         </member>
         <member name="T:wojilu.Config.TopNavDisplay">
@@ -8601,7 +9075,7 @@
         </member>
         <member name="P:wojilu.Config.SiteSetting.AlertActivation">
             <summary>
-            对尚未激活的用户，是否提醒他激活
+            对尚未激活的用户，是否必须激活才能登录
             </summary>
         </member>
         <member name="P:wojilu.Config.SiteSetting.UserSendConfirmEmailInterval">
@@ -8617,11 +9091,6 @@
         <member name="P:wojilu.Config.SiteSetting.RegisterType">
             <summary>
             注册的三种类型 (1)开放注册 (2)关闭注册 (3)只有受邀请用户才可以注册
-            </summary>
-        </member>
-        <member name="P:wojilu.Config.SiteSetting.LoginType">
-            <summary>
-            登录限制(1)注册之后自动登录 (2)必须激活才能登录)
             </summary>
         </member>
         <member name="P:wojilu.Config.SiteSetting.TopNavDisplay">
@@ -9142,6 +9611,36 @@
             注册用户的状态(待审核、删除、置顶、推荐、普通)
             </summary>
         </member>
+        <member name="F:wojilu.Common.AppBase.MemberStatus.Normal">
+            <summary>
+            普通用户
+            </summary>
+        </member>
+        <member name="F:wojilu.Common.AppBase.MemberStatus.Pick">
+            <summary>
+            精选推荐用户
+            </summary>
+        </member>
+        <member name="F:wojilu.Common.AppBase.MemberStatus.Top">
+            <summary>
+            置顶推荐用户
+            </summary>
+        </member>
+        <member name="F:wojilu.Common.AppBase.MemberStatus.Approving">
+            <summary>
+            待审核用户
+            </summary>
+        </member>
+        <member name="F:wojilu.Common.AppBase.MemberStatus.Deleted">
+            <summary>
+            已删入回收站的用户
+            </summary>
+        </member>
+        <member name="F:wojilu.Common.AppBase.MemberStatus.UnApproved">
+            <summary>
+            审核未通过
+            </summary>
+        </member>
         <member name="T:wojilu.Web.otherBindFunction">
             <summary>
             额外自定义的绑定方法。在默认的绑定执行完之后，本方法会被附加上去继续执行
@@ -9230,21 +9729,21 @@
             </summary>
             <typeparam name="T">节点必须实现了 INode 接口</typeparam>
         </member>
-        <member name="M:wojilu.Tree`1.FindById(System.Int32)">
+        <member name="M:wojilu.Tree`1.FindById(System.Int64)">
             <summary>
             根据 Id 检索节点
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:wojilu.Tree`1.FindParent(System.Int32)">
+        <member name="M:wojilu.Tree`1.FindParent(System.Int64)">
             <summary>
             根据 Id 获取它的上级节点
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:wojilu.Tree`1.FindPath(System.Int32)">
+        <member name="M:wojilu.Tree`1.FindPath(System.Int64)">
             <summary>
             根据 Id，获取它的节点路径(从根级开始到当前节点)
             </summary>
@@ -9257,7 +9756,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:wojilu.Tree`1.FindChildren(System.Int32)">
+        <member name="M:wojilu.Tree`1.FindChildren(System.Int64)">
             <summary>
             根据 Id，获取所有子节点
             </summary>
@@ -9270,35 +9769,35 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:wojilu.Tree`1.GetById(System.Int32)">
+        <member name="M:wojilu.Tree`1.GetById(System.Int64)">
             <summary>
             根据 Id 获取节点
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:wojilu.Tree`1.GetDepth(System.Int32)">
+        <member name="M:wojilu.Tree`1.GetDepth(System.Int64)">
             <summary>
             根据 Id 获取节点的深度
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:wojilu.Tree`1.GetParent(System.Int32)">
+        <member name="M:wojilu.Tree`1.GetParent(System.Int64)">
             <summary>
             根据 Id 获取上级节点
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:wojilu.Tree`1.GetPath(System.Int32)">
+        <member name="M:wojilu.Tree`1.GetPath(System.Int64)">
             <summary>
             根据 Id，获取节点的路径(从根级开始到当前节点)
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:wojilu.Tree`1.GetChildren(System.Int32)">
+        <member name="M:wojilu.Tree`1.GetChildren(System.Int64)">
             <summary>
             根据 Id，获取所有下级节点
             </summary>
@@ -9317,7 +9816,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:wojilu.Tree`1.DropList(System.String,System.Int32)">
+        <member name="M:wojilu.Tree`1.DropList(System.String,System.Int64)">
             <summary>
             树状下拉列表控件
             </summary>
@@ -9325,7 +9824,7 @@
             <param name="selectValue">当前选定的值</param>
             <returns></returns>
         </member>
-        <member name="M:wojilu.Tree`1.DropList(System.String,System.Int32,System.Int32,System.String)">
+        <member name="M:wojilu.Tree`1.DropList(System.String,System.Int64,System.Int64,System.String)">
             <summary>
             获取下拉列表select
             </summary>
@@ -9342,7 +9841,7 @@
             <param name="treeId"></param>
             <returns></returns>
         </member>
-        <member name="M:wojilu.Tree`1.RenderList(System.String,System.Boolean,wojilu.INodeBinder,System.Int32)">
+        <member name="M:wojilu.Tree`1.RenderList(System.String,System.Boolean,wojilu.INodeBinder,System.Int64)">
             <summary>
             获取树状结构的 html
             </summary>
@@ -9588,6 +10087,20 @@
             </summary>
             <param name="ctx"></param>
             <param name="actionName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:wojilu.Web.Mvc.MvcViews.getTemplateByAction(System.String)">
+            <summary>
+            根据 action 名称获取模板对象
+            </summary>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:wojilu.Web.Mvc.MvcViews.getTemplateByFileName(System.String)">
+            <summary>
+            根据文件名称获取模板对象，文件名必须从视图 view 的根目录算起
+            </summary>
+            <param name="fileName"></param>
             <returns></returns>
         </member>
         <member name="P:wojilu.OAuth.AccessToken.Uid">

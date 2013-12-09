@@ -13,7 +13,7 @@ namespace wojilu.sample.Controller {
             base.LayoutControllerType = typeof( ArticleController );
         }
 
-        public void Show( int id ) {
+        public void Show( long id ) {
 
             Category c = Category.findById( id );
             bind( "c", c );
@@ -42,7 +42,7 @@ namespace wojilu.sample.Controller {
             set( "page", list.PageBar );
         }
 
-        public void List( int id ) {
+        public void List( long id ) {
 
             Category c = Category.findById( id );
             DataPage<Article> list = Article.findPage( "CategoryId=" + id, 1 );
@@ -53,7 +53,7 @@ namespace wojilu.sample.Controller {
             set( "page", list.PageBar );
         }
 
-        public void ListContent( int id ) {
+        public void ListContent( long id ) {
 
             Category c = Category.findById( id );
             bind( "c", c );

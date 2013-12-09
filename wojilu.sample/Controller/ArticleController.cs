@@ -35,7 +35,7 @@ namespace wojilu.sample.Controller {
         private void bindNewArticle() {
 
             Article ca = ctx.GetItem( "article" ) as Article;
-            int id = ca == null ? 0 : ca.Id;
+            long id = ca == null ? 0 : ca.Id;
 
             List<Article> list = Article.find( "order by Id desc" ).list( 8 );
             IBlock block = getBlock( "list" );
@@ -49,7 +49,7 @@ namespace wojilu.sample.Controller {
             }
         }
 
-        public void Show( int id ) {
+        public void Show( long id ) {
 
             Article a = Article.findById( id );
             bind( "a", a );

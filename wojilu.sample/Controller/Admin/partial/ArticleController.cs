@@ -23,7 +23,7 @@ namespace wojilu.sample.Controller.Admin {
         }
 
 
-        private void bindLink( IBlock block, int id ) {
+        private void bindLink( IBlock block, long id ) {
             block.Set( "article.EditLink", to( Edit, id ) );
             block.Set( "article.DeleteLink", to( Delete, id ) );
         }

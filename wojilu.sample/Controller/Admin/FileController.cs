@@ -76,7 +76,7 @@ namespace wojilu.sample.Controller.Admin {
             redirect( Index );
         }
 
-        public void Delete( int id ) {
+        public void Delete( long id ) {
 
             UploadFile f = UploadFile.findById( id );
             if (f == null) {
